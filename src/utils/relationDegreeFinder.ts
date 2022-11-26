@@ -1,8 +1,10 @@
 import { DbType } from "../types/db.type";
 
-export const relationDegreeFinder = (db:DbType, searcherId:number,searchingId:number,degreeCount:number,escapeList:number[],searcherName:string):string =>{
+export const relationDegreeFinder = (db:DbType, searcherId:number,searchingId:number,degreeCount:number,escapeList:number[],searcherName:string,maxDegree:number = 5):string|undefined =>{
     // return if connection number is >= 5
-    if (degreeCount >= 5) {
+    // console.log(searcherId,searchingId, escapeList);
+    
+    if (degreeCount >= maxDegree) {
         return "Not Found";
     }
     // search the searching id in the searcher's own relationship list
@@ -28,7 +30,8 @@ export const relationDegreeFinder = (db:DbType, searcherId:number,searchingId:nu
                     const nestedSearcher = db.find(person => person.id === searcherRealationList[i].id);
                     const nestedSearcherName = nestedSearcher?.name;
                     if (nestedSearcherName) {
-                        const nestedFoundPerson = relationDegreeFinder(db,searcherRealationList[i].id,searchingId,degreeCount+1,[...escapeList,searcherRealationList[i].id],nestedSearcherName);
+                        // console.log(searcherRealationList[i].id,foundPerson);
+                        const nestedFoundPerson = relationDegreeFinder(db,searcherRealationList[i].id,searchingId,degreeCount+1,[...escapeList,searcherRealationList[i].id],nestedSearcherName,maxDegree);
                         if (nestedFoundPerson) {
                             return searcherName + " > " + nestedFoundPerson;
                         }
@@ -37,5 +40,4 @@ export const relationDegreeFinder = (db:DbType, searcherId:number,searchingId:nu
             }
         }
     }
-    return "Not Found 2";
 }

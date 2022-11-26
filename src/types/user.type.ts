@@ -8,3 +8,8 @@ export type UserType = {
         status: string
     }[],
 }
+
+export type RelationType =  {
+    id: number,
+    status: string
+}
