@@ -8,6 +8,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { DbType } from '../../types/db.type';
 import { TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import Paper from '@mui/material/Paper';
 
  type DegreeOfSeparationPropType = {
     setAllUsers: React.Dispatch<React.SetStateAction<DbType>>
@@ -65,7 +66,7 @@ const DegreeOfSeparation = ({allUsers,setAllUsers}:DegreeOfSeparationPropType) =
             >Degree Of Separation</Typography>
             <Box sx={{backgroundColor:"#fff", padding:"12px 40px"}}>
                 <Typography sx={{margin:"1rem auto", backgroundColor:"#F0F8FF", padding:"5px 14px"}} variant='h5'>Find Relation Degree between Two Users</Typography>
-                <Box sx={{display:"flex", justifyContent:"space-between",}}>
+                <Box sx={{display:"flex", justifyContent:"space-between",flexWrap:"wrap"}}>
                     <Box>
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
                             <InputLabel id="demo-simple-select-standard-label">Searcher Name</InputLabel>
@@ -124,24 +125,24 @@ const DegreeOfSeparation = ({allUsers,setAllUsers}:DegreeOfSeparationPropType) =
                     </Box>
                 </Box>
             </Box>
-            <Box 
-                sx={{
-                    margin:"3rem auto", 
-                    minWidth:"700px",
-                    maxWidth:"fit-content", 
-                    minHeight:"80px", 
-                    padding:"1rem 2rem",
-                    // backgroundImage: "linear-gradient(to right,#ff9800,#FFD100)",
-                    backgroundColor:"#fff",
-                    borderRadius:"10px",
-                    display:"flex",
-                    justifyContent:"center",
-                    alignItems:"center",
-                    color:"blue"
-                }}
-            >
-                <Typography sx={{textAlign:"center", }} variant='h4'>{relationDegree.length ? relationDegree : "Looking for the Degree...."}</Typography>
-            </Box>
+            <Paper elevation={2}>
+                <Box 
+                    sx={{
+                        margin:"3rem auto", 
+                        minWidth:"350px",
+                        maxWidth:"fit-content", 
+                        minHeight:"80px", 
+                        padding:"1rem 2rem",
+                        borderRadius:"10px",
+                        display:"flex",
+                        justifyContent:"center",
+                        alignItems:"center",
+                        color:"blue"
+                    }}
+                >
+                    <Typography sx={{textAlign:"center", }} variant='h4'>{relationDegree.length ? relationDegree : "Looking for the Degree...."}</Typography>
+                </Box>
+                </Paper>
         </Box>
     );
 };

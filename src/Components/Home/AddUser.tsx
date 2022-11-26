@@ -4,16 +4,49 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../../fake_db/fake_db';
 import { DbType } from '../../types/db.type';
 import { RelationType, UserType } from '../../types/user.type';
+import RelationOptions from './RelationOptions';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 
+// styls start 
+const addUser_container = {
+    backgroundColor:"#fff",
+    margin:"2rem auto",
+    padding:"1.5rem 3rem",
+}
+const close_btn = {
+    transition:"all 0.3s ease-in-out",
+    fontSize: "22px",
+    padding:"0",
+    "&:hover" : {color:"white", backgroundColor:"red"}
+}
+const add_title = {
+    margin:"1rem auto", 
+    backgroundColor:"#F0F8FF", 
+    padding:"5px 14px"
+}
 
-const relationshipStatus = ["Mother-Son","Father-Son","Friend","Mother-Daughter","Father-Daughter"];
+const user_card = {
+    width:{
+        xs: "250px",
+        sm: "auto",
+        md:"300px"
+    },
+    height:"80px",
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"center",
+    alignItems:"center",
+}
+// styls end
 
 type AddUserPropType = {
     setAllUsers: React.Dispatch<React.SetStateAction<DbType>>
-    allUsers: DbType
+    allUsers: DbType,
+    setSectionOpen: React.Dispatch<React.SetStateAction<string|null>>
 }
 
-const AddUser = ({allUsers,setAllUsers}:AddUserPropType):JSX.Element => {
+const AddUser = ({allUsers,setAllUsers,setSectionOpen}:AddUserPropType):JSX.Element => {
     // const [allUsers,setAllUsers] = useState<DbType>([]);
     const [name,setName] = useState<string>("");
     const [relations,setRelations] = useState<RelationType[]>([]);
@@ -88,64 +121,42 @@ const AddUser = ({allUsers,setAllUsers}:AddUserPropType):JSX.Element => {
     }
     
     return (
-        <Box
-            sx={{
-                backgroundColor:"#fff",
-                margin:"2rem auto",
-                padding:"1.5rem 3rem",
-            }}
-        >
-            <Typography sx={{margin:"1rem auto", backgroundColor:"#F0F8FF", padding:"5px 14px"}} variant='h5'>Add a New User</Typography>
+        <Box sx={addUser_container}>
+            <Box textAlign='right'>
+                <Button 
+                    sx={close_btn}
+                    color='error' 
+                    variant={"outlined"}
+                    onClick={()=>setSectionOpen(null)}
+                >X</Button>
+            </Box>
+            <Typography sx={add_title} variant='h5'>Add a New User</Typography>
             <FormControl>
                 <InputLabel htmlFor="Name">Full Name</InputLabel>
-                <Input onChange={e=>setName(e.target.value)} id="Name" aria-describedby="my-helper-text" />
+                <Input onChange={e=>setName(e.target.value)} value={name} id="Name" aria-describedby="my-helper-text" />
                 <FormHelperText id="Name-helper-text">We'll share your name with other users.</FormHelperText>
             </FormControl>
-            <Box sx={{display:"grid",gridTemplateColumns:"repeat(5,1fr)"}}>
+            
+            <Grid container  spacing={2}>
                 {
-                    name && allUsers.map(user => <Box key={user.id}>
-                        <Box 
+                    name && allUsers.map(user => <Grid item xs={12} sm={6} md={4} lg={3} key={user.id}>
+                        <Paper elevation={2} 
                             sx={{
+                                ...user_card,
                                 backgroundColor: currentSelection.id === user.id ? "orange":"",
-                                margin: "4px",
-                                border:"1px solid lightblue",
-                                borderRadius:"8px",
-                                width:"250px",
-                                height:"80px",
-                                display:"flex",
-                                flexDirection:"column",
-                                justifyContent:"center",
-                                alignItems:"center",
                             }} 
                             onClick={()=>handleCurrentSelection(user.id,user.name)} 
                         >
                             <Typography variant='h6'>{user.name}</Typography>
                             <Typography variant='body1'>{getRelationStatus(user.id)}</Typography>
-                        </Box>
-                    </Box>)
+                        </Paper>
+                    </Grid>)
                 }
-            </Box>
+            </Grid>
 
-            
             <Box>
                 {
-                    !!currentSelection.id && <FormControl sx={{ m: 1, minWidth: 180 }}>
-                        <InputLabel id='relation-status'>Choose Relationship</InputLabel>
-                        <Select 
-                            labelId='relation-status'
-                            id='relation-statuss'
-                            value={currentSelection.status}
-                            label="Relationship"
-                            onChange={handleCurrentRelation}
-                        >
-                            <MenuItem>
-                                <em>None</em>
-                            </MenuItem>
-                            {
-                                relationshipStatus.map(status => <MenuItem value={status} key={status}>{status}</MenuItem>)
-                            }
-                        </Select>
-                    </FormControl>
+                    !!currentSelection.id && <RelationOptions status={currentSelection.status} onHandle={handleCurrentRelation}></RelationOptions>
                 }
             </Box>
             

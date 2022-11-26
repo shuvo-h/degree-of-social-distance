@@ -17,7 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'About',];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
