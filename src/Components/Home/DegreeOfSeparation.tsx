@@ -18,7 +18,6 @@ import Paper from '@mui/material/Paper';
 const DegreeOfSeparation = ({allUsers,setAllUsers}:DegreeOfSeparationPropType) => {
     const [maxDegree,setMaxDegree] = useState<number>(5);
     const [relationDegree,setRelationDegree] = useState<string>("");
-    // const [allUser,setAllUser] = useState<DbType>([]);
     const [searcherID, setSearcherID] = useState<number | null>(null);
     const [searchingID, setSearchingID] = useState<number | null>(null);
 
@@ -32,9 +31,7 @@ const DegreeOfSeparation = ({allUsers,setAllUsers}:DegreeOfSeparationPropType) =
         // get name of the user
         const name = allUsers.find(user => user.id === searcherID)?.name;
         if (searcherID && searchingID && name) {
-            // const relationDegreeRes = relationDegreeFinder(db,1,4,0,[1],"A",maxDegree);
             const relationDegreeRes = relationDegreeFinder(allUsers,searcherID,searchingID,0,[searcherID],name,maxDegree);
-            // console.log(relationDegreeRes);
             const isNotFound = relationDegreeRes?.split(" > ").includes("Not Found");
             if (isNotFound) {
                 setRelationDegree(`There is no relationship upto ${maxDegree} degree!`);
@@ -109,7 +106,6 @@ const DegreeOfSeparation = ({allUsers,setAllUsers}:DegreeOfSeparationPropType) =
                                 sx={{
                                     padding:"0",
                                     width:"80px",
-                                    // height:"20px"
                                 }}
                                  size="small"
                                 id="outlined-number"

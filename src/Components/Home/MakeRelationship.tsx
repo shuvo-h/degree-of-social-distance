@@ -1,11 +1,10 @@
 import { Box, Grid, Typography,SelectChangeEvent } from '@mui/material';
 import React, { useState,useEffect } from 'react';
 import { DbType } from '../../types/db.type';
-import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { UserType } from '../../types/user.type';
 import RelationOptions from './RelationOptions';
-import { purple, red,blueGrey, lime } from '@mui/material/colors';
+import {blueGrey, lime } from '@mui/material/colors';
 import Button from '@mui/material/Button';
 
 
@@ -20,8 +19,6 @@ const MakeRelationship = ({allUsers,setAllUsers,setSectionOpen}:MakeRelationship
     const [relationStatus,setRelationStatus] = useState<string>("");
     const [existRelation,setExistRelation] = useState<string>("");
     
-
-    console.log(allUsers,selected);
     const handleRelationMake = (user:UserType) =>{
         // check if the user is already exist, then remove, else push
         const isExist = selected?.find((existUser:UserType) => existUser?.id === user?.id);
@@ -43,7 +40,6 @@ const MakeRelationship = ({allUsers,setAllUsers,setSectionOpen}:MakeRelationship
         if (status && user_1?.id && user_2?.id) {
             // check in relations_1 if exist in user_2
             const existIdx_1 = user_1.relations.findIndex(el=>el.id === user_2.id);
-            console.log(user_1,existIdx_1,user_2.id);
             if (existIdx_1 > -1) {
                 // replace the relation
                 user_1.relations.splice(existIdx_1,1,{id:user_2.id,status: status})
@@ -87,8 +83,7 @@ const MakeRelationship = ({allUsers,setAllUsers,setSectionOpen}:MakeRelationship
             setAllUsers(newUserList);
             setRelationStatus("");
             setSelected([]);
-            setExistRelation("")
-            console.log(userIdx_1,userIdx_2);
+            setExistRelation("");
             
             // newUserList
         }

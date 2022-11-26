@@ -1,5 +1,5 @@
 export const db = [
-    
+/*
     { 
         id: 1,
         name: "A",
@@ -81,7 +81,7 @@ export const db = [
             {id: 4,status: "Dgt"},
         ]
     },
-
+*/
     { 
         id: 101,
         name: "Aayushi",

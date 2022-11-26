@@ -1,46 +1,75 @@
-# Getting Started with Create React App
+# Degree-of-Relation (A Test Assignment)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple react application with typescript and a frontend library materialUI has been used with typescript to design the user interface. This application is a simple app where it simplify to find the relation degree among the users. 
 
-## Available Scripts
+## Where to check the application?
 
-In the project directory, you can run:
+Go to **[live link](https://six-degree-of-separation.netlify.app/)** fom your browser and it will open with the home page.
 
-### `npm start`
+## What are the technologies used in this application?
+
+
+- ***React.js***
+- ***Typescript***
+- ***Material-UI***
+- ***ECMAScript 6***
+- ***GitHub***
+- ***Netlify***
+
+
+## How to run this project?
+
+Clone the repository by giving this command the the terminal of the machine:
+
+`git clone https://github.com/shuvo-h/degree-of-social-distance`
+
+This command will download the necessary code from the github to test the project locally. \
+After cloning the code, install the necessary node modules using the following command in the terminal:
+
+`npm install`
+
+This may take few time depending on the configuration of the machine and internet speed. After successfully installing the necessary node modules, The project is ready to run locally. Now to run the project, run the below command on the terminal:
+
+`npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.The page will reload if you make edits.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## what are the available functionality and how are they works?
 
-### `npm run build`
+There are mainly three major functionality in this project. 
+1. Searching the relation degree
+2. Adding new user with relation to a number of users.
+3. Editing relationship or adding new relation to exist user's.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### First Activity
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+After successfully running the app, and to test the working functionality, at first add some user's either with relationship or no relation. To do this, Go to `ADD NEW USER` button which you will find at the lower section of the page. Click on it, which will expand the form with sufficient option to add a user. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Add user image](https://i.ibb.co/v1RJjLZ/add-user-degree-separation.png)
 
-### `npm run eject`
+Fillup the full name and it will show you the existing name list just below the name field, Choose any existing user to make a relation with him/her. After selecting the user, there will be option to choose the relation type. After selecting the type, click `ADD ____ IS YOUR RELATIVE` button and repeat this for each user you want to make a connection. After making relation, click `ADD USER` to save the user in database(Here data is storing in localstorage)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+There is another button `DEMO DB SETUP`. Use this button to add few static users in onClick. After clicking this demo data setup, reload the browser to load the data. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Second Activity
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+There is another button `MAKE NEW RELATION`. Click on to open the form where you will be able to make new relation between two user's. click on any two user and select the relation type you want to make. And finally click on `SET RELATIONSHIP` button to add/change the relation between them.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![change relationship](https://i.ibb.co/PcypFZb/change-relation.png)
+
+### Final Activity
+
+Go to top of the project and from the thwo select option, select two users to find relation degree between them. On the right side you can change the number of degree up to you want to serach. 
+
+![degree of relation](https://i.ibb.co/DzHvBX0/degree-search.png)
+
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project is developed by [Shuvo Haldar](https://www.shuvohaldar.com). \
+To know more, contact with him in [LinkedIn](https://www.linkedin.com/in/shuvo-haldar/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+

@@ -1,6 +1,6 @@
-import { Button, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
-import { Box, Stack } from '@mui/system';
-import React, { useEffect, useState } from 'react';
+import { Button, FormControl, FormHelperText, Input, InputLabel, SelectChangeEvent, Typography } from '@mui/material';
+import { Box, } from '@mui/system';
+import React, {  useState } from 'react';
 import { db } from '../../fake_db/fake_db';
 import { DbType } from '../../types/db.type';
 import { RelationType, UserType } from '../../types/user.type';
@@ -84,7 +84,6 @@ const AddUser = ({allUsers,setAllUsers,setSectionOpen}:AddUserPropType):JSX.Elem
         const usersResult = localStorage.getItem("users");
         if(usersResult){
             users = JSON.parse(usersResult);
-            console.log(users);
         }
         const newUser = { 
             id: Date.now(),
@@ -95,8 +94,7 @@ const AddUser = ({allUsers,setAllUsers,setSectionOpen}:AddUserPropType):JSX.Elem
         relations.forEach(relation =>{
             // find and push into this new user as his/her relation array
             const userIdx = users.findIndex((user:UserType) => user.id === relation.id);
-            users[userIdx].relations.push({id:newUser.id, status:relation.status})
-            console.log(users);
+            users[userIdx].relations.push({id:newUser.id, status:relation.status});
             
         })
         const newUsers = [...users,newUser];
