@@ -1,4 +1,4 @@
-# Degree-of-Relation (A Test Assignment)
+# Degree-of-Relation 
 
 This is a simple react application with typescript and a frontend library materialUI has been used with typescript to design the user interface. This application is a simple app where it simplify to find the relation degree among the users. 
 
