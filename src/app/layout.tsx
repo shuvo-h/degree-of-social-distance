@@ -16,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header className="bg-blue-200 py-4">Root Header</header>
+        <br />
+        {children}
+        <br />
+        <footer className="bg-blue-200 py-4">Root Footer</footer>
+      </body>
     </html>
   );
 }
