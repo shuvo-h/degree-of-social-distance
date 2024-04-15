@@ -1,0 +1,19 @@
+Component Hierercy:
+    - layout.js
+    - template.js
+    - error.js
+    - loading.js
+    - not-found.js
+    - page.js
+
+<Layout>
+    <Template>
+        <ErrorBoundary fallback={<ErrorComponent />}>
+            <Suspense fallback={<Loading />}>
+                <ErrorBoundary fallback={<NotFound />}>
+                    <Page />
+                </ErrorBoundary>
+            </Suspense>
+        </ErrorBoundary>
+    </Template>
+</Layout>
